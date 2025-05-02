@@ -1,0 +1,22 @@
+architecture: replication
+primary:
+  persistence:
+    enabled: true
+    storageClass: standard
+    accessModes:
+      - ReadWriteOnce
+    size: 8Gi
+secondary:
+  replicaCount: 2
+  persistence:
+    enabled: true
+    storageClass: standard
+    accessModes:
+      - ReadWriteOnce
+    size: 8Gi
+auth:
+  rootPassword: "xxxxxxx"
+  database: "mydb"
+  username: "nonso"
+  password: "xxxxxxxx"
+namespace: db
