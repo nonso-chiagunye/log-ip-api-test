@@ -22,11 +22,20 @@ spec:
             - name: DB_HOST
               value: mysql-primary.db.svc.cluster.local
             - name: DB_USER
-              value: "root"
+              valueFrom:
+                secretKeyRef:
+                  name: log-ip-api-js-secrets
+                  key: DB_USER
             - name: DB_PASS
-              value: "xxxxxx"
+              valueFrom:
+                secretKeyRef:
+                  name: log-ip-api-js-secrets
+                  key: DB_PASS
             - name: DB_NAME
-              value: "mydb"
+              valueFrom:
+                secretKeyRef:
+                  name: log-ip-api-js-secrets
+                  key: DB_NAME
 ---
 apiVersion: v1
 kind: Service

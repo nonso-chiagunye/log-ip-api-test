@@ -1,15 +1,17 @@
 const express = require("express");
 const mysql = require("mysql2");
+const dotenv = require("dotenv");
 const app = express();
 
 // Middleware to parse JSON bodies
 app.use(express.json());
 
 // Environment variables for MySQL connection
-const DB_HOST = process.env.DB_HOST || "mysql-primary.db.svc.cluster.local";
-const DB_USER = process.env.DB_USER || "root";
-const DB_PASS = process.env.DB_PASS || "xxxxxxx";
-const DB_NAME = process.env.DB_NAME || "mydb";
+dotenv.config({ path: "./config.env" });
+const DB_HOST = process.env.DB_HOST;
+const DB_USER = process.env.DB_USER;
+const DB_PASS = process.env.DB_PASS;
+const DB_NAME = process.env.DB_NAME;
 
 // Create MySQL connection pool
 const pool = mysql.createPool({
