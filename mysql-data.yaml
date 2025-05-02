@@ -15,8 +15,9 @@ secondary:
       - ReadWriteOnce
     size: 8Gi
 auth:
-  rootPassword: "xxxxxxx"
-  database: "mydb"
-  username: "nonso"
-  password: "xxxxxxxx"
+  existingSecret: mysql-secrets
+  rootPasswordKey: rootPassword
+  usernameKey: username
+  passwordKey: password
+  databaseKey: database
 namespace: db
